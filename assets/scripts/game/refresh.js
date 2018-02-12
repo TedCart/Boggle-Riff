@@ -63,7 +63,7 @@ const refresh = function () {
     }
     // console.log('store.user:', store.user)
   } else {
-    // localStorage.clear()
+    localStorage.clear()
   }
 }
 

@@ -59,11 +59,19 @@ function addPlayerWordToList (newWord) {
   // if (store.playerWords.length > 1) {
   const goBeforeMe = listParent.getElementsByTagName('li')[0]
   // console.log('About to add word to player list...')
+  const beforeCount = document.getElementById('player-word-list').getElementsByTagName('li').length
   listParent.insertBefore(newItem, goBeforeMe)
-  // animate the new word (if it appeared like it's supposed to)
-  if (listParent.getElementsByTagName('li')[0]) {
-    listParent.getElementsByTagName('li')[0].click()
+  const afterCount = document.getElementById('player-word-list').getElementsByTagName('li').length
+  if (beforeCount === afterCount) {
+    if (listParent.getElementsByTagName('li')[0]) {
+      listParent.getElementsByTagName('li')[0].click()
+    }
+  } else {
+    listParent.appendChild(newItem)
+    if (listParent.lastChild) { listParent.lastChild.click()   }
   }
+  // animate the new word (if it appeared like it's supposed to)
+
   // console.log('Added word to player list!!')
   // } else {
   // listParent.appendChild(newItem)

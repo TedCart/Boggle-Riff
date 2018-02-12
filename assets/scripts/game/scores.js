@@ -115,12 +115,12 @@ const scorePresentation = function () {
     iAmParent.innerHTML = '<tr><th>Word</th><th>Points</th></tr>'
     const removeMyLastChild = document.getElementById('player-word-list')
     const x = setInterval(function () {
-      // remove word from original list
-      if (removeMyLastChild.lastChild) {
-        removeMyLastChild.removeChild(removeMyLastChild.lastChild)
-      }
-
       if (store.playerWords) {
+        // remove word from original list
+        if (removeMyLastChild.lastChild) {
+          removeMyLastChild.removeChild(removeMyLastChild.lastChild)
+        }
+
         // add word and its score to a description list
         const word = store.playerWords[i]
         if (word) {
@@ -128,12 +128,12 @@ const scorePresentation = function () {
           iAmParent.innerHTML = iAmParent.innerHTML + newItem
         }
         i++
-        if (i === store.playerWords.length) {
+        if (i >= store.playerWords.length) {
+          clearInterval(x)
+
           $('#timer-div').html('<div>You Got: ' + scoreGame() + '</div>' + (store.CPUplayer ? '<div>They Got: ' + scoreOpponent() + '</div>' : ''))
           // console.log('store.CPUplayer (after scoring):', store.CPUplayer)
           // console.log(typeof store.CPUplayer)
-
-          clearInterval(x)
         }
       } else {
         clearInterval(x)
