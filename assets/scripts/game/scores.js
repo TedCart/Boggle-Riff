@@ -109,7 +109,7 @@ function scoreOpponent () {
 }
 
 const scorePresentation = function () {
-  if ((store.game) && (!store.skipScore)) {
+  if ((store.game) && (!store.skipScore) && (!store.reviewMode)) {
     let i = 0
     const iAmParent = document.getElementById('scored-table')
     iAmParent.innerHTML = '<tr><th>Word</th><th>Points</th></tr>'
