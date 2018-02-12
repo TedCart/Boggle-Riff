@@ -119,7 +119,7 @@ function addMiniDirections (object) {
 function noGame () {
   toggleGameButtons(noGameIds)
   if (!store.loadedOldGame) { clearLists() }
-  if (!store.newBoard) { addDirections() }
+  if (!store.newBoard) { addDirections(); moveFooter() }
 }
 function liveGame () { toggleGameButtons(liveGameIds) }
 function deadGame () { toggleGameButtons(deadGameIds) }

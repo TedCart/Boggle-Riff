@@ -11,6 +11,7 @@ const refresh = function () {
   store.loadedOldGame = false
   store.loadedDeadGame = false
   // Restores previous session on accidental page refresh
+  // console.log('localStorage.getItem(\'savedUser\') :\n', localStorage.getItem('savedUser'))
   if (localStorage.getItem('savedUser')) {
     store.user = JSON.parse(localStorage.getItem('savedUser'))
     // console.log('successfully retrieved user login info')
@@ -62,7 +63,7 @@ const refresh = function () {
     }
     // console.log('store.user:', store.user)
   } else {
-    localStorage.clear()
+    // localStorage.clear()
   }
 }
 

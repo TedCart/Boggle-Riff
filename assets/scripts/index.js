@@ -32,6 +32,6 @@ $(() => {
   gameEvents.AddHandlers()
   refresh.refresh()
   loginUi.toggleSignInButtons()
-  dictionaryTests.AddHandlers()
+  // dictionaryTests.AddHandlers()
   gameAnimate.AddHandlers()
 })
