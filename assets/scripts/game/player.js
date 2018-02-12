@@ -123,6 +123,7 @@ function endGame () {
     }
   }
   // document.getElementById('in-game-buttons').style.display = 'none'
+  if (store.reviewMode) { $('#timer-div').html('Review Mode') }
   if ((store.game) && (store.user)) {
     store.reviewMode ? $('#timer-div').html('Review Mode') : $('#timer-div').html("Time's up!")
   }
