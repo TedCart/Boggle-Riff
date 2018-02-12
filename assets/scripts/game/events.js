@@ -86,6 +86,7 @@ function rebuildGame (event) {
   store.playerWords = []
   store.playerWordCoordinates = []
   store.CPUplayer = false
+  $('#timer-div').html('Review Mode')
   page.clearAreaRightOfBoard()
   gameBuilder.createBoard(null)
 }
