@@ -61,15 +61,15 @@ function addPlayerWordToList (newWord) {
   // console.log('About to add word to player list...')
   const beforeCount = document.getElementById('player-word-list').getElementsByTagName('li').length
   listParent.insertBefore(newItem, goBeforeMe)
-  const afterCount = document.getElementById('player-word-list').getElementsByTagName('li').length
-  if (beforeCount === afterCount) {
+  // const afterCount = document.getElementById('player-word-list').getElementsByTagName('li').length
+  // if (beforeCount === afterCount) {
     if (listParent.getElementsByTagName('li')[0]) {
       listParent.getElementsByTagName('li')[0].click()
     }
-  } else {
-    listParent.appendChild(newItem)
-    if (listParent.lastChild) { listParent.lastChild.click()   }
-  }
+  // } else {
+  //   listParent.appendChild(newItem)
+  //   if (listParent.lastChild) { listParent.lastChild.click()   }
+  // }
   // animate the new word (if it appeared like it's supposed to)
 
   // console.log('Added word to player list!!')
