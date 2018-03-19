@@ -1,0 +1,42 @@
+
+  <div style="font-size:14pt;">Available Words</div>
+  <ul class="complete-word-list" style="outline:1px solid black;padding-left:5px;">
+    {{#each wordThings as |wordThing|}}
+      <li class="word-list-item" data-squares="{{wordThing.coordinates}}">
+        {{wordThing.word}}
+      </li>
+    {{/each}}
+  </ul>
+
+<!-- <dl class="complete-word-list dl-horizontal">
+  <dt style="text-align: left; width: 100px;">
+    Word
+  </dt>
+  <dd style="text-align: left; width: 20px; padding: 0;">
+    Difficulty
+  </dd>
+  {{#each wordThings as |wordThing|}}
+    <dt class="word-list-item" data-squares="{{wordThing.coordinates}}">
+      {{wordThing.word}}
+    </dt>
+    <dd>
+      {{wordThing.difficulty}}
+    </dd>
+  {{/each}}
+</dl> -->
+
+<!-- <ul data-id="{{book.id}}">
+  <li>
+    <h1> <small>Title: {{book.title}}</small></h1>
+  </li>
+  <li>
+    {{#if book.author}}
+      {{book.author}}
+    {{else}}
+      No author provided.
+    {{/if}}
+  </li>
+  <li>
+    <button type="button" class="remove-button">Remove</button>
+  </li>
+</ul> -->

@@ -12,6 +12,9 @@ const page = require('./page')
 const apiLogin = require('../login/api')
 const uiLogin = require('../login/ui')
 
+const solutionsTemplate = require('../templates/solutions-list.handlebars')
+const opponentListTemplate = require('../templates/opponent-list.handlebars')
+
 function inputWord (event) {
   event.preventDefault()
   if (store.timeLeft > 0) {
@@ -133,33 +136,42 @@ function endGame () {
 
 function printWordsToPage () {
   // console.log(availableWords)
-  const listElement = document.createElement('dl')
-  listElement.classList.add('complete-word-list')
-  listElement.classList.add('dl-horizontal')
-  const headRowHeader1 = document.createElement('dt')
-  headRowHeader1.innerText = 'Word'
-  headRowHeader1.setAttribute('style', 'text-align: left; width: 100px;')
-  const headRowHeader2 = document.createElement('dd')
-  headRowHeader2.innerText = 'Difficulty'
-  headRowHeader2.setAttribute('style', 'text-align: left; width: 20px; padding: 0;')
-  listElement.appendChild(headRowHeader1)
-  listElement.appendChild(headRowHeader2)
+  const arr = []
   for (let i = 0; i < store.wordList.length; i++) {
-    const newItem = document.createElement('dt')
-    newItem.setAttribute('data-squares', store.wordListCoordinates[i].toString())
-    newItem.setAttribute('style', 'text-align: left; width: 100px;')
-    newItem.classList.add('word-list-item')
-    newItem.innerText = store.wordList[i]
-    const newItem2 = document.createElement('dd')
-    newItem2.innerText = store.wordListDifficulty[i]
-    newItem2.setAttribute('style', 'text-align: left; width: 20px; padding: 0;')
-    listElement.appendChild(newItem)
-    listElement.appendChild(newItem2)
+    const newWordObject = {
+      word: store.wordList[i],
+      coordinates: store.wordListCoordinates[i].toString(),
+      difficulty: store.wordListDifficulty[i]
+    }
+    arr.push(newWordObject)
   }
+  const listElement = solutionsTemplate({wordThings: arr})
+  // const listElement = document.createElement('dl')
+  // listElement.classList.add('complete-word-list')
+  // listElement.classList.add('dl-horizontal')
+  // const headRowHeader1 = document.createElement('dt')
+  // headRowHeader1.innerText = 'Word'
+  // headRowHeader1.setAttribute('style', 'text-align: left; width: 100px;')
+  // const headRowHeader2 = document.createElement('dd')
+  // headRowHeader2.innerText = 'Difficulty'
+  // headRowHeader2.setAttribute('style', 'text-align: left; width: 20px; padding: 0;')
+  // listElement.appendChild(headRowHeader1)
+  // listElement.appendChild(headRowHeader2)
+  // for (let i = 0; i < store.wordList.length; i++) {
+  //   const newItem = document.createElement('dt')
+  //   newItem.setAttribute('data-squares', store.wordListCoordinates[i].toString())
+  //   newItem.setAttribute('style', 'text-align: left; width: 100px;')
+  //   newItem.classList.add('word-list-item')
+  //   newItem.innerText = store.wordList[i]
+  //   const newItem2 = document.createElement('dd')
+  //   newItem2.innerText = store.wordListDifficulty[i]
+  //   newItem2.setAttribute('style', 'text-align: left; width: 20px; padding: 0;')
+  //   listElement.appendChild(newItem)
+  //   listElement.appendChild(newItem2)
+  // }
   page.addWordDivs()
-  document.getElementById('wordList').innerHTML = ''
-  document.getElementById('wordList').appendChild(listElement)
-  document.getElementById('wordList').style.outline = '1px solid black'
+  document.getElementById('wordList').innerHTML = listElement
+  // document.getElementById('wordList').style.outline = '1px solid black'
   if (store.user) {
     // api.getAllWords()
     //   .then(ui.getAllWordsSuccess)
@@ -174,23 +186,37 @@ function printWordsToPage () {
 
 function printOpponentsWords () {
   if ((store.CPUplayer) && (!store.reviewMode)) {
-    const titleElement = document.createElement('p')
-    titleElement.innerText = "CPU's List"
-    const listElement = document.createElement('table')
-    // listElement.classList.add('complete-word-list')
-    listElement.setAttribute('style', 'padding:0; margin:0;')
-    // listElement.classList.add('dl-horizontal')
-    listElement.innerHTML = '<tr style="padding:0;"><th style="padding:0;">Word</th><th style="padding:0;">Points</th></tr>'
+    const arr = []
     for (let i = 0; i < store.opponentWords.length; i++) {
-      const word = store.opponentWords[i]
-      if (word) {
-        const newItem = '<tr><td class="word-list-item" data-squares="' + store.opponentWordCoordinates[i].toString() + '">' + word + '</td><td>' + store.scoreCard[word.length] + '</td></tr>'
-        listElement.innerHTML = listElement.innerHTML + newItem
+      const wordString = store.opponentWords[i]
+      const newWordObject = {
+        word: store.opponentWords[i],
+        coordinates: store.opponentWordCoordinates[i].toString(),
+        score: store.scoreCard[wordString.length]
       }
+      arr.push(newWordObject)
     }
-    document.getElementById('opponentList').innerHTML = ''
-    document.getElementById('opponentList').appendChild(titleElement)
-    document.getElementById('opponentList').appendChild(listElement)
+
+    const listElement = opponentListTemplate({wordThings: arr})
+    document.getElementById('opponentList').innerHTML = listElement
+    // const titleElement = document.createElement('p')
+    // titleElement.innerText = "CPU's List"
+    // const listElement = document.createElement('table')
+    // // listElement.classList.add('complete-word-list')
+    // listElement.setAttribute('style', 'padding:0; margin:0;')
+    // // listElement.classList.add('dl-horizontal')
+    // listElement.innerHTML = '<tr style="padding:0;"><th style="padding:0;">Word</th><th style="padding:0;">Points</th></tr>'
+    // for (let i = 0; i < store.opponentWords.length; i++) {
+    //   const word = store.opponentWords[i]
+    //   if (word) {
+    //     const newItem = '<tr><td class="word-list-item" data-squares="' + store.opponentWordCoordinates[i].toString() + '">' + word + '</td><td>' + store.scoreCard[word.length] + '</td></tr>'
+    //     listElement.innerHTML = listElement.innerHTML + newItem
+    //   }
+    // }
+    // document.getElementById('opponentList').innerHTML = ''
+    // document.getElementById('opponentList').appendChild(titleElement)
+    // document.getElementById('opponentList').appendChild(listElement)
+
     // if (store.user) {
     //   api.getAllWords()
     //     .then(ui.getAllWordsSuccess)

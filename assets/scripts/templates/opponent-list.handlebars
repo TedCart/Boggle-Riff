@@ -1,0 +1,16 @@
+
+  <div style="font-size:14pt;">CPU Score</div>
+  <div class="complete-word-list" style="outline:1px solid black;">
+    <table style="width:125px;">
+      {{#each wordThings as |wordThing|}}
+        <tr>
+          <td class="word-list-item" data-squares="{{wordThing.coordinates}}">
+            {{wordThing.word}}
+          </td>
+          <td>
+            {{wordThing.score}}
+          </td>
+        </tr>
+      {{/each}}
+    </table>
+  </div>
