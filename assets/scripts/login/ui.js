@@ -107,6 +107,7 @@ const signOutSuccess = function (data) {
 
 const signOutFailure = function (error) {
   console.error(error)
+  signOutSuccess()
   clearFields()
 }
 
