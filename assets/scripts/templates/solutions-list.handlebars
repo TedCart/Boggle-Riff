@@ -2,7 +2,7 @@
   <div style="font-size:14pt;">Available Words</div>
   <ul class="complete-word-list" style="outline:1px solid black;padding-left:5px;">
     {{#each wordThings as |wordThing|}}
-      <li class="word-list-item" data-squares="{{wordThing.coordinates}}">
+      <li class="word-list-item" data-squares="{{wordThing.coordinates}}" title="Difficulty: {{wordThing.difficulty}}">
         {{wordThing.word}}
       </li>
     {{/each}}

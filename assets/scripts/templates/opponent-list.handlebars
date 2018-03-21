@@ -4,7 +4,7 @@
     <table style="width:125px;">
       {{#each wordThings as |wordThing|}}
         <tr>
-          <td class="word-list-item" data-squares="{{wordThing.coordinates}}">
+          <td class="word-list-item" data-squares="{{wordThing.coordinates}}" title="Difficulty: {{wordThing.difficulty}}">
             {{wordThing.word}}
           </td>
           <td>

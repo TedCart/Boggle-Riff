@@ -192,7 +192,8 @@ function printOpponentsWords () {
       const newWordObject = {
         word: store.opponentWords[i],
         coordinates: store.opponentWordCoordinates[i].toString(),
-        score: store.scoreCard[wordString.length]
+        score: store.scoreCard[wordString.length],
+        difficulty: store.wordListDifficulty[store.wordList.indexOf(wordString)]
       }
       arr.push(newWordObject)
     }
