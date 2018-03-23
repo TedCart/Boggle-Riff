@@ -21,9 +21,14 @@ I removed all the white space from the dictionary file and made it an object ful
 ## Other Dictionaries...
 
 Source Host: http://www.mieliestronk.com/wordlist.html
+
 Source: http://www.mieliestronk.com/corncob_caps.txt
 
-I considered a more slim dictionary but it was missing certain words (like all profanity), so I ended up not using it. Players enjoy finding naughty words, so the inclusion of that sort of thing was important to me.
+I considered a more slim dictionary but it was missing certain words (like all profanity), so I ended up not using it for the player. Players enjoy finding naughty words, so the inclusion of that sort of thing was important to me.
+
+## Computer Opponent
+
+The CPU opponent, however, **does** use the smaller dictionary. The CPU opponent uses a basic ranking system on all available words in a board to assign them a difficulty. (The system is based on the length of the word, the number of turns in that word, whether there are more than three quarters vowels in the word, whether the word reads more left-to-right or right-to-left, etc.) Then whe the game is over, it returns all the words with a difficulty lower than the difficulty level of the CPU. As of right now, the difficulty cannot be changed by the user.
 
 ## Wireframes and Uer-Stories available [Here](https://git.generalassemb.ly/TedCart/full-stack-project-practice/blob/response/practice.md)
 
