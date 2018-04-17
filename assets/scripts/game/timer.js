@@ -58,7 +58,7 @@ function startCountdown () {
 
     // Display the result in the element with id="demo"
     if ((store.timeLeft >= 0) && (store.user) && (store.timerCheck !== '')) {
-      $('#timer-div').html(minutes + ':' + numeral(seconds).format('00'))
+      $('#timer-div').html((store.CPUplayer ? 'VS Mode</br>' : 'Single Player Mode</br>') + minutes + ':' + numeral(seconds).format('00'))
     }
 
     // If the count down is finished, write some text
